@@ -4,7 +4,7 @@ from django.core.exceptions import MultipleObjectsReturned
 from datacenter.models import *
 
 
-def get_schoolkid(name):
+def get_schoolkid(name='Фролов Иван'):
     if name:
         try:
             schoolkid = Schoolkid.objects.get(full_name__contains=name)
@@ -52,7 +52,7 @@ def create_commendation(schoolkid_name, subject_title):
             subject__title=subject_title
             ).order_by('date').reverse()
         if lessons.count() == 0:
-            print('Ошибка! В базе не найдено уроков с таким названием.', subject_title)
+            print('Ошибка! В базе не найдено уроков с таким названием.')
         else:
             lesson = lessons[0]
             Commendation.objects.create(
@@ -64,7 +64,7 @@ def create_commendation(schoolkid_name, subject_title):
                 )
 
 
-def improve_progress(name):
+def improve_progress(name='Фролов Иван'):
     schoolkid = get_schoolkid(name)
     if schoolkid:
         fix_marks(schoolkid)
