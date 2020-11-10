@@ -1,7 +1,7 @@
 import random
-from datacenter.models import *
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.exceptions import MultipleObjectsReturned
+from datacenter.models import *
 
 
 def get_schoolkid(name):
