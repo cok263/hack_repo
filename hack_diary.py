@@ -5,14 +5,17 @@ from django.core.exceptions import MultipleObjectsReturned
 
 
 def get_schoolkid(name):
-    try:
-        schoolkid = Schoolkid.objects.get(full_name__contains=name)
-    except ObjectDoesNotExist:
-        print('Ошибка! Ученик отсутствует в базе данных')
-    except MultipleObjectsReturned:
-        print('Ошибка! Существует несколько учеников с таким именем')
+    if name:
+        try:
+            schoolkid = Schoolkid.objects.get(full_name__contains=name)
+        except ObjectDoesNotExist:
+            print('Ошибка! Ученик отсутствует в базе данных')
+        except MultipleObjectsReturned:
+            print('Ошибка! Существует несколько учеников с таким именем')
+        else:
+            return schoolkid
     else:
-        return schoolkid
+        print('Ошибка! Не введено имя ученика')
 
 
 def fix_marks(schoolkid):
