@@ -49,7 +49,7 @@ def create_commendation(schoolkid_name, subject_title):
             subject__title=subject_title
             ).order_by('date').reverse()
         if lessons.count() == 0:
-            print("В базе не найдено уроков с таким названием.", subject_title)
+            print('Ошибка! В базе не найдено уроков с таким названием.', subject_title)
         else:
             lesson = lessons[0]
             Commendation.objects.create(
