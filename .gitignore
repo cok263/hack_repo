@@ -1,5 +1,3 @@
-venv/
-.idea/
-__pycache__/
-media/
-schoolbase.sqlite3
+*
+!hack_diary.py
+!README.md
